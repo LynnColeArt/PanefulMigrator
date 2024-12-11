@@ -163,11 +163,6 @@ Define target structure in `resources/directory_structure.yaml`:
 ## License
 MIT License - See LICENSE file for details
 
-## Support
-- Issues: Submit via GitHub Issues
-- Questions: See our [FAQ](docs/FAQ.md)
-- Documentation: [Full Documentation](docs/index.md)
-
 ## Roadmap
 - [ ] Enhanced pattern detection
 - [ ] Interactive migration planning
