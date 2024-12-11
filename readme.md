@@ -1,175 +1,78 @@
 # Paneful Migration Utility
 
 ## Overview
-The Paneful Migration Utility is a tool designed to analyze, plan, and execute the reorganization of the Paneful art generation toolkit codebase. It provides comprehensive code analysis and guided migration to improve maintainability, implement proper design patterns, and ensure clear separation of concerns.
+The Paneful Migration Utility analyzes and plans the reorganization of the Paneful art generation toolkit codebase. It provides code analysis tools to help identify areas needing refactoring and assists in planning code reorganization.
 
-## Features
+## Current Features
 
 ### Code Analysis
 - **Class Structure Analysis**
-  - Class relationships and dependencies
-  - Inheritance hierarchies
-  - Method and property tracking
-  - Visual class diagrams (Mermaid)
+  - Maps class relationships and dependencies
+  - Tracks inheritance hierarchies
+  - Generates Mermaid class diagrams
 
 - **Configuration Detection**
-  - Hardcoded constants and magic numbers
-  - Configuration-like patterns
-  - Default parameters
-  - Embedded resource paths
-  - Suggestions for externalization
+  - Identifies hardcoded constants and magic numbers
+  - Flags embedded configuration patterns
+  - Suggests values for externalization
 
 - **Complexity Analysis**
-  - Cyclomatic complexity
-  - Method and class metrics
-  - Nesting depth
-  - Coupling scores
-  - Risk area identification
-
-### Migration Planning
-- Configurable migration mapping rules
-- Detailed migration plan generation
-- Dependency tracking
-- Git history preservation
-- Plan validation and conflict detection
-
-### Project Organization
-- Proper separation of concerns:
-  - Core functionality
-  - Transform operations
-  - Resource management
-  - User interfaces
-- Design pattern implementation
-- Resource organization
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd paneful2
-```
-
-2. Set up the migration utility:
-```bash
-cd migration_utility
-python setup.py
-```
-
-## Usage
-
-Run the utility:
-```bash
-python main.py
-```
-
-### Main Menu Options:
-1. **Select Project to Analyze**
-   - Choose a project or directory to analyze
-   - View basic project statistics
-
-2. **Project Overview**
-   - File and directory statistics
-   - Size distributions
-   - Type breakdowns
-
-3. **Class Structure Analysis**
-   - View class relationships
-   - Inheritance hierarchies
-   - Method and property details
-   - Visual class diagrams
-
-4. **Configuration Analysis**
-   - Identify embedded configuration
-   - Group by location and type
-   - Suggestions for externalization
-
-5. **Complexity Analysis**
-   - View complexity metrics
-   - Identify risk areas
-   - Get refactoring suggestions
-
-6. **Migration Preview**
-   - View planned changes
-   - Check for conflicts
-   - Review suggestions
-
-7. **Run Migration**
-   - Execute planned changes
-   - Back up existing code
-   - Preserve git history
+  - Measures cyclomatic complexity
+  - Identifies complex methods and classes
+  - Suggests potential refactoring points
 
 ## Project Structure
-
 ```
 migration_utility/
 ├── core/
 │   ├── analyzers/
-│   │   ├── base.py
-│   │   ├── class_analyzer.py
-│   │   ├── config_analyzer.py
-│   │   └── complexity_analyzer.py
-│   ├── display.py
-│   └── scanner.py
+│   │   ├── base.py           # Base analyzer functionality
+│   │   ├── class_analyzer.py # Class structure analysis
+│   │   ├── config_analyzer.py # Configuration detection
+│   │   └── complexity_analyzer.py # Complexity metrics
+│   ├── display.py           # User interface
+│   └── scanner.py           # File scanning and analysis coordination
 ├── planner/
-│   └── mapper.py
+│   └── mapper.py            # Migration planning
 ├── resources/
-│   ├── directory_structure.yaml
-│   └── migration_mapping.yaml
-├── main.py
-└── setup.py
+│   ├── directory_structure.yaml  # Target structure definition
+│   └── migration_mapping.yaml    # Migration rules
+└── main.py                  # Main program entry
 ```
 
-## Configuration
+## Current Status
+- Basic directory structure implemented
+- Analysis components functional:
+  - Class structure analysis
+  - Configuration detection
+  - Complexity metrics
+- User interface for viewing results
+- Migration execution not yet implemented
 
-### Migration Mapping
-Configure migration rules in `resources/migration_mapping.yaml`:
-- File type patterns
-- Target locations
-- Special handling rules
-- Validation requirements
+## Usage
+```bash
+python main.py
+```
 
-### Directory Structure
-Define target structure in `resources/directory_structure.yaml`:
-- Core components
-- Transform operations
-- Resource locations
-- Interface organization
+### Available Options:
+1. Select Project to Analyze
+2. Project Overview
+3. View Class Structure Analysis
+4. View Configuration Analysis
+5. View Complexity Analysis
+6. Preview Migration Plan
+7. Run Migration (coming soon)
+8. Exit
 
-## Development
-
-### Adding New Analyzers
-1. Inherit from `BaseAnalyzer` in `core/analyzers/base.py`
-2. Implement `analyze_file` method
-3. Define analysis result dataclass
-4. Update scanner integration
-
-### Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
-
-### Testing
-- Run tests: `python -m pytest tests/`
-- Check code style: `flake8 .`
+## Next Steps
+- Implement migration execution
+- Add validation tools
+- Complete configuration menu
+- Test with complex codebases
 
 ## Requirements
 - Python 3.8+
-- Required packages:
-  ```
-  pyyaml
-  ```
+- PyYAML
 
-## License
-MIT License - See LICENSE file for details
-
-## Roadmap
-- [ ] Enhanced pattern detection
-- [ ] Interactive migration planning
-- [ ] Integration with CI/CD
-- [ ] Web interface for visualization
-- [ ] Multi-project support
-
-## Contributors
-- Lynn Cole - Initial work
-
+## Development
+This is an active work in progress. Current focus is on implementing core analysis functionality and planning features.
