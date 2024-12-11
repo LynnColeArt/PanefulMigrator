@@ -1,0 +1,25 @@
+app:
+  core:
+    io: {}
+    config: {}
+    logging: {}
+  transform:
+    assembly:
+      strategies: {}
+      factories: {}
+    slicing: {}
+    effects:
+      strategies: {}
+      factories: {}
+  controlnet:
+    strategies: {}
+    factories: {}
+  userspace:
+    cli: {}
+    web: {}
+  util: {}
+resources:
+  dictionaries: {}
+  models:
+    upscalers: {}
+  fonts: {}

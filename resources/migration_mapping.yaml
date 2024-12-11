@@ -1,0 +1,102 @@
+# resources/migration_mapping.yaml
+
+version: "1.0"
+
+# File type patterns and their target locations
+patterns:
+  python:
+    # Core functionality
+    - pattern: "functions/base/*.py"
+      target: "app/core/{name}"
+      priority: 1
+    
+    # Transform operations
+    - pattern: "functions/transform/*.py"
+      target: "app/transform/{name}"
+      priority: 1
+    
+    # Strategy implementations
+    - pattern: "functions/**/strategies/*.py"
+      target: "app/transform/{parent}/strategies/{name}"
+      priority: 2
+    
+    # Factory implementations
+    - pattern: "functions/**/factories/*.py"
+      target: "app/transform/{parent}/factories/{name}"
+      priority: 2
+    
+    # CLI interface code
+    - pattern: "functions/menu*.py"
+      target: "app/userspace/cli/{name}"
+      priority: 1
+    
+    # Utility functions
+    - pattern: "functions/util/*.py"
+      target: "app/util/{name}"
+      priority: 1
+
+  config:
+    - pattern: "*.cfg"
+      target: "app/core/config/{name}"
+      priority: 1
+    - pattern: "*.yml"
+      target: "app/core/config/{name}"
+      priority: 1
+    - pattern: "*.yaml"
+      target: "app/core/config/{name}"
+      priority: 1
+
+  resources:
+    - pattern: "meaningless-words/*"
+      target: "resources/dictionaries/{name}"
+      priority: 1
+    - pattern: "fonts/*"
+      target: "resources/fonts/{name}"
+      priority: 1
+    - pattern: "**/models/*.pth"
+      target: "resources/models/{name}"
+      priority: 1
+
+  docs:
+    - pattern: "*.md"
+      target: "docs/{name}"
+      priority: 1
+    - pattern: "*.txt"
+      target: "docs/{name}"
+      priority: 1
+
+# Special handling rules
+special:
+  ignore:
+    - "**/__pycache__"
+    - "**/*.pyc"
+    - "**/*.pyo"
+    - "**/*.git/*"
+    - "**/logs/*"
+  
+  preserve_structure:
+    - "app/transform/strategies"
+    - "app/transform/factories"
+
+# Validation rules
+validation:
+  required_dirs:
+    - "app/core"
+    - "app/transform"
+    - "app/userspace/cli"
+    - "resources"
+    - "docs"
+  
+  no_empty_dirs: true
+  
+  file_checks:
+    - type: "python"
+      max_size: 1048576  # 1MB
+    - type: "config"
+      max_size: 524288   # 512KB
+
+# Available placeholders for target paths:
+# {name}   - Full filename with extension
+# {stem}   - Filename without extension
+# {parent} - Parent directory name
+# {ext}    - File extension without dot

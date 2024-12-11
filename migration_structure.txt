@@ -1,0 +1,17 @@
+Migration Utility Structure - D:\projects\paneful2\migration_utility
+==================================================
+└── directory_mapper.py
+└── main.py
+└── migration_structure.txt
+└── migration_utility.py
+└── setup.py
+├── core/
+│   └── __init__.py
+│   └── display.py
+│   └── scanner.py
+├── planner/
+│   └── __init__.py
+│   └── mapper.py
+├── resources/
+│   └── directory_structure.yaml
+│   └── migration_mapping.yaml
